@@ -17,6 +17,7 @@ int a[1 + N/BITSPERWORD];
 int set(int i) { return a[i>>SHIFT] |= (1<<(i & MASK)); }
 
 // int clr(int i) : i의 값 만큼 1을 SHIFT한 비트를 NOT 연산 한후 AND 한다. 
+// 해당 비트가 1이었을 경우 1을 부정한 0과 AND 연산하므로 해당 비트는 0이 된다. 
 int clr(int i) { return a[i>>SHIFT] &= ~(1<<(i & MASK));}
 
 // int test(int i) : i의 값 만큼 1을 SHIFT한 비트와 배열의 해당 인덱스에 저장된 비트를 AND함.
