@@ -19,7 +19,6 @@ float taxCalc(int income) {
 		
 		float ratio = 0.14 + 0.01 * count;
 		int coefficient = income + 500 - standard;
-		printf("count: %d, standard : %d, coefficient: %d, ratio: %f, constant: %d\n", count, standard, coefficient, ratio, constant); 
 		printf("%d + %f * %d\n", constant, ratio, coefficient);
 		
 		return constant + ratio * coefficient;
