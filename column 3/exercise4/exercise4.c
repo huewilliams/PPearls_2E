@@ -80,6 +80,33 @@ int calculateDayOfWeek(int year, int month, int day) {
 	return result;
 }
 
+// 3. 주어진 연도와 달에 대한 달력을 출력하는 함수 
+void printCalender(int year, int month) {
+	int monthDates[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int dates = datesOfYear(year);
+	if(dates > 365) monthDates[1]++;
+	
+	printf("%d년 %d월 달력\n", year, month);
+	printf("일\t월\t화\t수\t목\t금\t토\n");
+	
+	int startWeek = calculateDayOfWeek(year, month, 1);
+	int count = 0;
+	int i;
+	for(i=0; i<startWeek; i++) {
+		printf(" \t");
+		count++;
+	}
+	
+	for(i=1; i<=monthDates[month-1]; i++) {
+		printf("%d\t",i);
+		count++;
+		if(count==7) {
+			printf("\n");
+			count = 0;
+		}
+	}
+}
+
 int main() {
 	char option;
 	printf(" > option 1 : 두 날짜 사이의 일 수 계산\n");
@@ -142,5 +169,14 @@ int main() {
 			
 			printf("해당 날짜는 %s요일 입니다.", week);
 			break;
+			
+		case '3':
+			printf(" > option 3 : 해당 년도 월의 달력 출력\n");
+			
+			int calenderYear, calenderMonth;
+			printf(" > 달력을 출력할 년도와 달을 입력하세요.\n");
+			scanf("%d %d", &calenderYear, &calenderMonth);
+			
+			printCalender(calenderYear, calenderMonth);
 	}
 }
